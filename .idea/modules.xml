@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://D:/CCleaner/水果商城/test/test.iml" filepath="D:/CCleaner/水果商城/test/test.iml" />
+    </modules>
+  </component>
+</project>
