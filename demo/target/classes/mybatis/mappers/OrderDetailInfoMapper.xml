@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ldj.demo.mapper.OrderDetailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ldj.demo.domain.OrderDetailInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="detail_id" property="detailId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="fruit_id" property="fruitId" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="fruit_name" property="fruitName" jdbcType="VARCHAR" />
+    <result column="fruit_price" property="fruitPrice" jdbcType="DECIMAL" />
+    <result column="fruit_number" property="fruitNumber" jdbcType="BIGINT" />
+    <result column="fruit_total_price" property="fruitTotalPrice" jdbcType="DECIMAL" />
+    <result column="detail_status" property="detailStatus" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

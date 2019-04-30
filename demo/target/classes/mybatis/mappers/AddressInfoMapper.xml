@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ldj.demo.mapper.AddressInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ldj.demo.domain.AddressInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="address_id" property="addressId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
+    <result column="receive_tel" property="receiveTel" jdbcType="VARCHAR" />
+    <result column="receive_phone" property="receivePhone" jdbcType="VARCHAR" />
+    <result column="receive_province" property="receiveProvince" jdbcType="VARCHAR" />
+    <result column="receive_city" property="receiveCity" jdbcType="VARCHAR" />
+    <result column="receive_county" property="receiveCounty" jdbcType="VARCHAR" />
+    <result column="receive_detail_address" property="receiveDetailAddress" jdbcType="VARCHAR" />
+    <result column="address_state" property="addressState" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>
