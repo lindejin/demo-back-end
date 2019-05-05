@@ -66,7 +66,7 @@ public class TestMybatis {
         TimeUtil timeUtil = new TimeUtil();
         String nowTime = timeUtil.getTime();
         System.out.println(nowTime);
-        boolean temp = timeUtil.cmpTime("1556606283506");
+        boolean temp = timeUtil.cmpTime("1556775726369");
         System.out.println("------------分割线------------");
         System.out.println(temp);
         System.out.println("哈哈哈哈123");
