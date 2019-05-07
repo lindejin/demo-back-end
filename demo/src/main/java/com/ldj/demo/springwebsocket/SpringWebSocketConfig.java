@@ -3,6 +3,7 @@ package com.ldj.demo.springwebsocket;
 import com.ldj.demo.interceptor.SpringWebSocketHandlerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
@@ -27,17 +28,17 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class SpringWebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        System.out.println("555");
         registry.addHandler(webSocketHandler(), "/websocket/socketServer")
-                .addInterceptors(new SpringWebSocketHandlerInterceptor()).setAllowedOrigins("*");
+                .setAllowedOrigins("*");
 
-        registry.addHandler(webSocketHandler(), "/sockjs/socketServer").setAllowedOrigins("http://localhost:28180")
-                .addInterceptors(new SpringWebSocketHandlerInterceptor()).withSockJS();
+        registry.addHandler(webSocketHandler(), "/sockjs/socketServer").setAllowedOrigins("*")
+                .withSockJS();
     }
 
     @Bean
-    public TextWebSocketHandler webSocketHandler() {
+    public SpringWebSocketHandler webSocketHandler() {
 
         return new SpringWebSocketHandler();
     }
-
 }

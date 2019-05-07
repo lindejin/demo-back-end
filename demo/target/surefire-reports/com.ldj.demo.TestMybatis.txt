@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ldj.demo.TestMybatis
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.994 s - in com.ldj.demo.TestMybatis

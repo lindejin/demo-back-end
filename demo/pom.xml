@@ -88,7 +88,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.7</version>
+      <version>2.9.8</version>
     </dependency>
     <!-- web -->
     <dependency>
@@ -97,7 +97,18 @@
       <version>2.5</version>
       <scope>provided</scope>
     </dependency>
+    <!--jstl-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
 
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
     <!--junitTest-->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -127,7 +138,7 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
-      <version>1.2.3</version>
+      <version>1.2.31</version>
     </dependency>
 <!--    邮箱验证-->
     <dependency>
@@ -144,12 +155,12 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-websocket</artifactId>
-      <version>5.1.6.RELEASE</version>
+      <version>5.1.3.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-messaging</artifactId>
-      <version>5.1.5.RELEASE</version>
+      <version>5.1.3.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>javax.websocket</groupId>
@@ -163,6 +174,18 @@
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
     </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.10</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>

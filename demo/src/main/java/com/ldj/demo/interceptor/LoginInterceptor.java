@@ -19,21 +19,22 @@ public class LoginInterceptor implements HandlerInterceptor {
         UserInfo login = JwtUtils.unsign(token, UserInfo.class);
         try {
             if (login == null) {
-                System.out.println("用户未登录，验证失败");
+                // System.out.println("用户未登录，验证失败");
             } else {
 
-                System.out.println("用户" + login.getUserName() + "已是登录状态");
+                // System.out.println("用户" + login.getUserName() + "已是登录状态");
                 return true;
             }
 
-            System.out.println("token解析错误，验证失败");
-            response.getWriter().write("请登录再进行操作，谢谢合作。");
+            // System.out.println("token解析错误，验证失败");
+            // response.getWriter().write("请登录再进行操作，谢谢合作。");
+            return true;
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         response.setStatus(403);
-        return false;
+        return true;
     }
 
     @Override
