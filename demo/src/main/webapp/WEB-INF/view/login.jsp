@@ -28,8 +28,8 @@
         function connectServer() {
           var clientName = $("#client_name").val();
           if ("WebSocket" in window) {
-            websocket = new WebSocket("ws://127.0.0.1:8080/websocket/socketServer");
-            websocket.onerror = console.log;
+            websocket = new WebSocket("ws://localhost:8080/websocket/socketServer");
+            console.log("连接成功")
           } else if ("MozWebSocket" in window) {
             alert("MozWebSocket");
             websocket = new WebSocket("ws://127.0.0.1:8080/websocket/socketServer");
@@ -99,7 +99,7 @@
 <div class="well" id="msg"></div>
 <div class="col-lg">
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="请输入用户名..." id="client_name">
+        <input type="text" class="form-control" placeholder="请输入用户名..." id="name">
         <span class="input-group-btn">
                 <button class="btn btn-default" type="button" id="conncet_server">连接服务器</button>
             </span>

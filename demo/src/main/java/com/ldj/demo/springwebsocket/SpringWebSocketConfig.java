@@ -30,10 +30,10 @@ public class SpringWebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         System.out.println("555");
         registry.addHandler(webSocketHandler(), "/websocket/socketServer")
-                .setAllowedOrigins("*");
+                .addInterceptors(new SpringWebSocketHandlerInterceptor()).setAllowedOrigins("*");
 
         registry.addHandler(webSocketHandler(), "/sockjs/socketServer").setAllowedOrigins("*")
-                .withSockJS();
+                .addInterceptors(new SpringWebSocketHandlerInterceptor()).withSockJS();
     }
 
     @Bean
