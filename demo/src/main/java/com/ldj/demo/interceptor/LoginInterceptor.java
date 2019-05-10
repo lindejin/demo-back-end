@@ -26,15 +26,14 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
 
-            // System.out.println("token解析错误，验证失败");
-            // response.getWriter().write("请登录再进行操作，谢谢合作。");
-            return true;
+            System.out.println("token解析错误，验证失败");
+            response.getWriter().write("请登录再进行操作，谢谢合作。");
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         response.setStatus(403);
-        return true;
+        return false;
     }
 
     @Override

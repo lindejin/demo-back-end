@@ -9,14 +9,28 @@ import com.ldj.demo.domain.AddressInfo;
 public interface AddressService {
     /**
      *
-     * 功能描述:
+     * 功能描述:新增收货地址信息
      *
      * @param: []
      * @return: int
      * @auther: ldj
      * @date: 2019/4/19 15:28
      */
-    public int saveAddress();
+    public int saveAddress(AddressInfo addressInfo);
+
+    /**
+     * 更新收货地址
+     * @param addressInfo
+     * @return
+     */
+    public int modifyAddress(AddressInfo addressInfo);
+
+    /**
+     * 逻辑删除收货地址
+     * @param addressInfo
+     * @return
+     */
+    public int removeAddress(AddressInfo addressInfo);
     /**
      *
      * 功能描述:

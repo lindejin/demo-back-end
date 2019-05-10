@@ -32,10 +32,20 @@ public class AddressServiceImpl implements AddressService {
      * @date: 2019/4/19 15:05
      */
     @Override
-    public int saveAddress() {
-
-        return 0;
+    public int saveAddress(AddressInfo addressInfo) {
+        return addressInfoMapper.insertSelective(addressInfo);
     }
+
+    @Override
+    public int modifyAddress(AddressInfo addressInfo) {
+        return addressInfoMapper.updateByPrimaryKeySelective(addressInfo);
+    }
+
+    @Override
+    public int removeAddress(AddressInfo addressInfo) {
+        return addressInfoMapper.updateByPrimaryKeySelective(addressInfo);
+    }
+
     /**
      *
      * 功能描述:获取用户地址

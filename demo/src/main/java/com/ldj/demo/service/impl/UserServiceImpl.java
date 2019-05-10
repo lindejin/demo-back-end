@@ -78,4 +78,19 @@ public class UserServiceImpl implements UserService {
     public List<Map<String, Object>> getMapQueryUsers() {
         return null;
     }
+
+    @Override
+    public int saveUser(UserInfo userInfo) {
+        return userInfoMapper.insertSelective(userInfo);
+    }
+
+    @Override
+    public int modifyUser(UserInfo userInfo) {
+        return userInfoMapper.updateByPrimaryKeySelective(userInfo);
+    }
+
+    @Override
+    public int removeUser(UserInfo userInfo) {
+        return userInfoMapper.updateByPrimaryKeySelective(userInfo);
+    }
 }

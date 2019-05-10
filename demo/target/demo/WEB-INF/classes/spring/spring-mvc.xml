@@ -25,6 +25,13 @@
               <mvc:exclude-mapping path="/user/test"/>
             <mvc:exclude-mapping path="/user/saveSESSION"/>
             <mvc:exclude-mapping path="/user/getSESSION"/>
+            <!--      websocket测试放行      -->
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/login01"/>
+            <mvc:exclude-mapping path="/chat"/>
+            <mvc:exclude-mapping path="/send02"/>
+            <mvc:exclude-mapping path="/websocket/socketServer"/>
+            <mvc:exclude-mapping path="/sockjs/socketServer"/>
             <bean id="LoginInterceptor" class="com.ldj.demo.interceptor.LoginInterceptor"></bean> <!--这个类就是我们自定义的Interceptor -->
         </mvc:interceptor>
         <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法  -->

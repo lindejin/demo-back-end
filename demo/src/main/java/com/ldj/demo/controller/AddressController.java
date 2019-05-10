@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019/4/19 11:20
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/address")
 public class AddressController {
 }

@@ -15,14 +15,45 @@ import java.util.Map;
  * 用户模块，提供用户功能实现service接口
  */
 public interface UserService {
-    /**
+
+
+
+    /**获取单个用户信息
      * @param userInfo
      * @return
      */
     public int getUser(UserInfo userInfo);
+
+    /**
+     * 获取用户信息列表(未完成条件查询)
+     * @param pageNumber
+     * @param pageSize
+     * @return PageInfo
+     */
     public PageInfo<UserInfo> findUsers(int pageNumber,int pageSize);
     public List<UserInfo> getUsers();
     public List<UserInfo> finUser();
     public Map<String, Object> queryUser(Integer uerid);
     public List<Map<String,Object>> getMapQueryUsers();
+
+    /**
+     * 新增用户信息
+     * @param userInfo
+     * @return int
+     */
+    public int saveUser(UserInfo userInfo);
+
+    /**
+     * 更新用户信息
+     * @param userInfo
+     * @return int
+     */
+    public int modifyUser(UserInfo userInfo);
+
+    /**
+     * 注销用户信息，逻辑删除
+     * @param userInfo
+     * @return int
+     */
+    public int removeUser(UserInfo userInfo);
 }
