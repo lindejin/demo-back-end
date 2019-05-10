@@ -17,4 +17,14 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <!-- getUserList1 根据条件查询分页用户列表,联表查询，表名使用了别名，需要使用ResultMap进行字段映射而不再是 resultType="user"-->
+  <select id="findUserList1" resultMap="BaseResultMap" parameterType="Map" >
+    select user_id,user_name,user_pass,user_email,user_phone,user_question,user_answer,user_state,user_role,create_time,update_time
+    from t_user
+    <where>
+      <if test="name!=null"> and user_name like  CONCAT('%', #{name},'%')</if>
+      <if test="email!=null">and user_email like  CONCAT('%', #{email},'%')</if>
+      <if test="phone!=null">and user_phone like  CONCAT('%', #{phone},'%')</if>
+    </where>
+  </select>
 </mapper>

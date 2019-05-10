@@ -56,4 +56,5 @@ public interface UserService {
      * @return int
      */
     public int removeUser(UserInfo userInfo);
+    public PageInfo<UserInfo> findUserList1(Map<String,Object> map);
 }

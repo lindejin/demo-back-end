@@ -5,10 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.ldj.demo.domain.UserInfo;
 import com.ldj.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +22,29 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @PostMapping("/add")
+    public int addUser(@RequestParam UserInfo userInfo){
+        return userService.saveUser(userInfo);
+    }
+    @PutMapping("/updata")
+    public int updataUser(@RequestParam UserInfo userInfo){
+        return userService.modifyUser(userInfo);
+    }
+    @DeleteMapping("/delete")
+    public int deleteUser(@RequestParam UserInfo userInfo){
+        return userService.removeUser(userInfo);
+    }
+    @GetMapping("/select")
+    public PageInfo<UserInfo> selectUser(@RequestParam Map<String, Object> params,int pageNumber,int pageSize){
+//        for (String key : params.keySet()) {
+//            System.out.println("Key = " + key);
+//        }
+//        for (Object value : params.values()) {
+//            System.out.println("Value = " + value);
+//        }
+        return userService.findUserList1(params);
+    }
 
     @GetMapping("/login")
     public PageInfo<UserInfo> login(UserInfo userInfo){

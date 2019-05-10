@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Condition;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -49,10 +50,10 @@ public class UserServiceImpl implements UserService {
         //正常
         Condition condition = new Condition(UserInfo.class);
         Condition.Criteria criteria = condition.createCriteria();
-        criteria.andCondition("user_id like '%1%'");
+        criteria.andCondition("user_pass like '%1%'");
 
 
-
+        PageHelper.startPage(1,5);
         List<UserInfo> ls = userInfoMapper.selectByExample(condition);
 
         return ls;
@@ -92,5 +93,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public int removeUser(UserInfo userInfo) {
         return userInfoMapper.updateByPrimaryKeySelective(userInfo);
+    }
+
+    @Override
+    public PageInfo<UserInfo> findUserList1(Map<String, Object> map) {
+        PageHelper.startPage(Integer.parseInt(map.get("pageSize").toString()),Integer.parseInt(map.get("pageNumber").toString()));
+
+        List<UserInfo> personList = userInfoMapper.findUserList1(map);
+
+//        Iterator<UserInfo> iterator = personList.iterator();
+//        while (iterator.hasNext()) {
+//            UserInfo str = iterator.next();
+//            System.out.println(str.toString());
+//        }
+        //得到分页的结果对象
+        PageInfo<UserInfo> personPageInfo = new PageInfo<>(personList);
+
+        return personPageInfo;
     }
 }

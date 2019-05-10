@@ -15,13 +15,6 @@ public class AddressServiceImpl implements AddressService {
 
     @Autowired(required=false)
     private AddressInfoMapper addressInfoMapper;
-
-
-
-
-
-
-
     /**
      *
      * 功能描述: 录入用户地址

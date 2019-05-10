@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ="/spring/spring-context.xml")
@@ -27,7 +25,8 @@ public class TestMybatis {
         //System.out.println(userService.findUsers(1,3).getList());
 //        正确的打印List
         //System.out.println(Arrays.toString(userService.findUsers(1,3).getList().toArray()));
-        Iterator<UserInfo> iterator = userService.findUsers(1,5).getList().iterator();
+//        Iterator<UserInfo> iterator = userService.findUsers(1,5).getList().iterator();
+        Iterator<UserInfo> iterator = userService.getUsers().iterator();
         while (iterator.hasNext()) {
             UserInfo str = iterator.next();
             System.out.println(str.toString());
@@ -71,6 +70,30 @@ public class TestMybatis {
         System.out.println(temp);
         System.out.println("哈哈哈哈123");
 
+    }
+    @Test
+    public void TestInsertUser(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName("eee");
+        userInfo.setUserPass("eee");
+        Short s = 0;
+        userInfo.setUserRole(s);
+        userService.saveUser(userInfo);
+        System.out.println(userInfo.getUserId());
+        // 测试结果，可以直接获得主键
+    }
+    @Test
+    public void TestInsertUserList(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("name","z");
+        map.put("pageNumber",1);
+        map.put("pageSize",5);
+
+        Iterator<UserInfo> iterator = userService.findUserList1(map).getList().iterator();
+        while (iterator.hasNext()) {
+            UserInfo str = iterator.next();
+            System.out.println(str.toString());
+        }
     }
 
 }

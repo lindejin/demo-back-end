@@ -4,11 +4,13 @@ import com.ldj.demo.domain.UserInfo;
 import com.ldj.demo.mapper.UserInfoMapper;
 import com.ldj.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author ldj
  * @date 2019/4/19 11:39
  */
+@Service
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
