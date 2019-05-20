@@ -13,4 +13,161 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <!-- getUserList1 根据条件查询分页用户列表,联表查询，表名使用了别名，需要使用ResultMap进行字段映射而不再是 resultType="user"-->
+  <select id="getCartMap" resultType="java.util.HashMap" parameterType="Map" >
+    select
+    e.detail_id,
+    e.order_id,
+    e.user_id,
+    e.fruit_id,
+    e.order_no,
+    e.fruit_name,
+    e.fruit_price,
+    e.fruit_total_price,
+    e.fruit_number,
+    e.detail_status,
+    e.create_time as fruit_time01,
+    e.update_time as fruit_time02,
+    b.payment_price,
+    b.payment_type,
+    b.freight_cost,
+    b.order_status,
+    b.pay_time,
+    b.send_time,
+    b.finish_time,
+    b.close_time,
+    b.create_time as order_time01,
+    b.update_time as order_time02,
+    a.cart_id,
+    a.is_checked,
+    a.cart_status,
+    a.create_time as orderd_time01,
+    a.update_time as orderd_time02
+    from t_cart a
+    LEFT JOIN t_order b ON a.order_id = b.order_id
+    LEFT JOIN t_order_detail e ON e.order_id = b.order_id
+    <where>
+      a.cart_status = 0 and b.order_status = 0 and e.detail_status = 0
+      <if test="id!=null"> and a.user_id =  #{id}</if>
+    </where>
+  </select>
+  <select id="findCartFruitMap" resultType="java.util.HashMap" parameterType="Map" >
+    select
+    e.detail_id,
+    e.order_id,
+    e.user_id,
+    e.fruit_id,
+    e.order_no,
+    e.fruit_name,
+    e.fruit_price,
+    e.fruit_total_price,
+    e.fruit_number,
+    e.detail_status,
+    b.payment_price,
+    b.payment_type,
+    b.freight_cost,
+    b.order_status,
+    b.pay_time,
+    b.send_time,
+    b.finish_time,
+    b.close_time,
+    a.cart_id,
+    a.is_checked,
+    a.cart_status,
+    f.fruit_image,
+    f.fruit_summery
+    from t_cart a
+    LEFT JOIN t_order b ON a.order_id = b.order_id
+    LEFT JOIN t_order_detail e ON e.order_id = b.order_id
+    LEFT JOIN t_fruit f ON f.fruit_id = e.fruit_id
+    <where>
+      a.cart_status = 0 and b.order_status = 0 and e.detail_status = 0 and f.fruit_status = 1
+      <if test="id!=null"> and a.user_id =  #{id}</if>
+    </where>
+  </select>
+  <insert id="updateCart">
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+      UPDATE t_cart
+      SET cart_status = 1
+      WHERE order_id = #{item}
+    </foreach>
+  </insert>
+  <select id="findCartFruitMap02" resultType="java.util.HashMap" parameterType="Map" >
+    select
+    e.detail_id,
+    e.order_id,
+    e.user_id,
+    e.fruit_id,
+    e.order_no,
+    e.fruit_name,
+    e.fruit_price,
+    e.fruit_total_price,
+    e.fruit_number,
+    e.detail_status,
+    b.payment_price,
+    b.payment_type,
+    b.freight_cost,
+    b.order_status,
+    b.pay_time,
+    b.send_time,
+    b.finish_time,
+    b.close_time,
+    b.create_time as order_time01,
+    b.update_time as order_time02,
+    a.cart_id,
+    a.is_checked,
+    a.cart_status,
+    f.fruit_image,
+    f.fruit_summery,
+    g.user_phone,
+    g.user_name
+    from t_cart a
+    LEFT JOIN t_order b ON a.order_id = b.order_id
+    LEFT JOIN t_order_detail e ON e.order_id = b.order_id
+    LEFT JOIN t_fruit f ON f.fruit_id = e.fruit_id
+    LEFT JOIN t_user g ON g.user_id = e.user_id
+    <where>
+      a.cart_status = 1 and b.order_status = 1 and e.detail_status = 0
+      <if test="id!=null"> and a.user_id =  #{id}</if>
+    </where>
+  </select>
+  <select id="findCartFruitMap03" resultType="java.util.HashMap" parameterType="Map" >
+    select
+    e.detail_id,
+    e.order_id,
+    e.user_id,
+    e.fruit_id,
+    e.order_no,
+    e.fruit_name,
+    e.fruit_price,
+    e.fruit_total_price,
+    e.fruit_number,
+    e.detail_status,
+    b.payment_price,
+    b.payment_type,
+    b.freight_cost,
+    b.order_status,
+    b.pay_time,
+    b.send_time,
+    b.finish_time,
+    b.close_time,
+    b.create_time as order_time01,
+    b.update_time as order_time02,
+    a.cart_id,
+    a.is_checked,
+    a.cart_status,
+    f.fruit_image,
+    f.fruit_summery,
+    g.user_phone,
+    g.user_name
+    from t_cart a
+    LEFT JOIN t_order b ON a.order_id = b.order_id
+    LEFT JOIN t_order_detail e ON e.order_id = b.order_id
+    LEFT JOIN t_fruit f ON f.fruit_id = e.fruit_id
+    LEFT JOIN t_user g ON g.user_id = e.user_id
+    <where>
+      a.cart_status = 1 and b.order_status = 1 and e.detail_status = 0 and b.send_time is null
+      <if test="id!=null"> and a.user_id =  #{id}</if>
+    </where>
+  </select>
 </mapper>

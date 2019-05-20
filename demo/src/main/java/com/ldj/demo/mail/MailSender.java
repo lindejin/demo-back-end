@@ -26,7 +26,8 @@ public class MailSender {
     private static String EmailPassword = "fvikvejnsqgghbdb";
     private static String EmailSMTPhost = "smtp.qq.com";
 
-    public static void sendMail(String toEmail , String identifyCode){
+    public static boolean  sendMail(String toEmail , String identifyCode){
+        boolean falg =false;
         Properties props = new Properties();
 
 //        设置邮件Debug功能
@@ -60,8 +61,10 @@ public class MailSender {
             transport.sendMessage(msg, new Address[] {new InternetAddress(toEmail)});
 
             transport.close();
+            falg=true;
         } catch (UnsupportedEncodingException | MessagingException e) {
             e.printStackTrace();
         }
+        return falg;
     }
 }

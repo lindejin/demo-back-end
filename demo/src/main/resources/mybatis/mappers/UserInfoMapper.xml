@@ -27,4 +27,8 @@
       <if test="phone!=null">and user_phone like  CONCAT('%', #{phone},'%')</if>
     </where>
   </select>
+  <select id="findUser01"  resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM t_user
+        where user_name = #{name}
+    </select>
 </mapper>

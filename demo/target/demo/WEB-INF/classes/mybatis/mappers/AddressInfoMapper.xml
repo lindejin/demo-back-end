@@ -18,4 +18,13 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <!-- getUserList1 根据条件查询分页用户列表,联表查询，表名使用了别名，需要使用ResultMap进行字段映射而不再是 resultType="user"-->
+  <select id="findAddressList01" resultMap="BaseResultMap" parameterType="Map" >
+    select address_id,user_id,receive_name,receive_tel,receive_phone,receive_province,receive_city,receive_county,receive_detail_address,address_state
+    , create_time,update_time from t_address
+    <where>
+      address_state = 0
+      <if test="id!=null"> and user_id like  CONCAT('%', #{id},'%')</if>
+    </where>
+  </select>
 </mapper>

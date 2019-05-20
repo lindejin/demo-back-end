@@ -2,6 +2,8 @@ package com.ldj.demo.service;
 
 import com.ldj.demo.domain.OrderInfo;
 
+import java.util.List;
+
 /**
  * @author ldj
  * @date 2019/4/19 11:26
@@ -19,7 +21,7 @@ public interface OrderService {
      * @param orderInfo
      * @return
      */
-    public int modifyOrder(OrderInfo orderInfo);
+    public int modifyOrder(List<Long> longs);
 
     /**
      * 逻辑删除订单信息

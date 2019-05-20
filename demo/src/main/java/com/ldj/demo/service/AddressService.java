@@ -1,6 +1,9 @@
 package com.ldj.demo.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ldj.demo.domain.AddressInfo;
+
+import java.util.Map;
 
 /**
  * @author ldj
@@ -41,4 +44,10 @@ public interface AddressService {
      * @date: 2019/4/19 15:51
      */
     public AddressInfo findAddress(AddressInfo addressInfo);
+    /**
+     *
+     * @param map
+     * @return
+     */
+    public PageInfo<AddressInfo> findAddressList01(Map<String,Object> map);
 }

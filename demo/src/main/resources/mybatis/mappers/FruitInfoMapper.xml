@@ -20,4 +20,32 @@
     <result column="fruit_summery" property="fruitSummery" jdbcType="LONGVARCHAR" />
     <result column="fruit_detail" property="fruitDetail" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <!-- getUserList1 根据条件查询分页用户列表,联表查询，表名使用了别名，需要使用ResultMap进行字段映射而不再是 resultType="user"-->
+  <select id="findFruitList01" resultMap="BaseResultMap" parameterType="Map" >
+    select fruit_id,fruit_name,fruit_summery,fruit_detail,fruit_image,prime_cost,fruit_sale,sale_count,fruit_stock,shelf_status,fruit_hot,
+    fruit_status,create_time,update_time from t_fruit
+    <where>
+    1=1
+      <if test="name!=null"> and fruit_name like  CONCAT('%', #{name},'%')</if>
+      <if test="summery!=null">and fruit_summery like  CONCAT('%', #{summery},'%')</if>
+      <if test="detail!=null">and fruit_detail like  CONCAT('%', #{detail},'%')</if>
+    </where>
+  </select>
+  <!-- 用户查询所用 -->
+  <select id="findFruitList02" resultMap="BaseResultMap" parameterType="Map" >
+    select fruit_id,fruit_name,fruit_summery,fruit_detail,fruit_image,prime_cost,fruit_sale,sale_count,fruit_stock,shelf_status,fruit_hot,
+    fruit_status,create_time,update_time from t_fruit
+    <where>
+       1 = 1
+      <if test="name!=null"> and fruit_name like  CONCAT('%', #{name},'%')</if>
+      <if test="summery!=null">and fruit_summery like  CONCAT('%', #{summery},'%')</if>
+      <if test="detail!=null">and fruit_detail like  CONCAT('%', #{detail},'%')</if>
+    </where>
+    <if test="num!=null and num == '1'.toString()">
+      order by sale_count
+    </if>
+    <if test="num!=null and num == '2'.toString()">
+      order by prime_cost
+    </if>
+  </select>
 </mapper>

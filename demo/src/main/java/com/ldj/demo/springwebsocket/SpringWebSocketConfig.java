@@ -28,7 +28,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class SpringWebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        System.out.println("555");
+        // System.out.println("555");
         registry.addHandler(webSocketHandler(), "/websocket/socketServer")
                 .addInterceptors(new SpringWebSocketHandlerInterceptor()).setAllowedOrigins("*");
 

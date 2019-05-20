@@ -24,9 +24,11 @@ public class UserServiceImpl implements UserService {
     @Autowired(required=false)
     private UserInfoMapper userInfoMapper;
     @Override
-    public int getUser(UserInfo userInfo) {
-        PageHelper.startPage(1, 6);
-        return userInfoMapper.selectCount(userInfo);
+    public UserInfo getUser(UserInfo userInfo) {
+        return userInfoMapper.selectOne(userInfo);
+    }
+    public UserInfo getUser02(UserInfo userInfo) {
+        return userInfoMapper.selectOne(userInfo);
     }
     @Override
     public PageInfo<UserInfo> findUsers(int pageNumber,int pageSize) {
@@ -110,5 +112,10 @@ public class UserServiceImpl implements UserService {
         PageInfo<UserInfo> personPageInfo = new PageInfo<>(personList);
 
         return personPageInfo;
+    }
+
+    @Override
+    public int findUser01(String name) {
+        return userInfoMapper.findUser01(name);
     }
 }

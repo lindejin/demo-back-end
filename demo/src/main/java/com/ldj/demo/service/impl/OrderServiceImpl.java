@@ -6,6 +6,8 @@ import com.ldj.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author ldj
  * @date 2019/4/19 11:39
@@ -20,8 +22,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int modifyOrder(OrderInfo orderInfo) {
-        return orderInfoMapper.updateByPrimaryKeySelective(orderInfo);
+    public int modifyOrder(List<Long> longs) {
+        return orderInfoMapper.updateOrder(longs);
     }
 
     @Override

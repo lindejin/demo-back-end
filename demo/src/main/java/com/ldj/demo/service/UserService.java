@@ -22,7 +22,7 @@ public interface UserService {
      * @param userInfo
      * @return
      */
-    public int getUser(UserInfo userInfo);
+    public UserInfo getUser(UserInfo userInfo);
 
     /**
      * 获取用户信息列表(未完成条件查询)
@@ -57,4 +57,10 @@ public interface UserService {
      */
     public int removeUser(UserInfo userInfo);
     public PageInfo<UserInfo> findUserList1(Map<String,Object> map);
+    /**
+     * 查询是否已经注册
+     * @param name
+     * @return
+     */
+    public int findUser01(String name);
 }

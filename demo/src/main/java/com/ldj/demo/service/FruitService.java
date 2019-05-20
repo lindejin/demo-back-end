@@ -1,6 +1,9 @@
 package com.ldj.demo.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ldj.demo.domain.FruitInfo;
+
+import java.util.Map;
 
 /**
  * @author ldj
@@ -27,4 +30,19 @@ public interface FruitService {
      * @return
      */
     public int removeFruit(FruitInfo fruitInfo);
+
+    /**
+     *
+     * @param map
+     * @return
+     */
+    public PageInfo<FruitInfo> findFruit01(Map<String,Object> map);
+
+    /**
+     *
+     * @param map
+     * @return
+     */
+    public PageInfo<FruitInfo> findFruit02(Map<String,Object> map);
+    public FruitInfo findFruit(FruitInfo fruitInfo);
 }

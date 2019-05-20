@@ -1,5 +1,8 @@
 package com.ldj.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -39,9 +42,17 @@ public class FruitInfo implements Serializable {
     @Column(name = "fruit_status")
     private String fruitStatus;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss"
+    )
     @Column(name = "create_time")
     private Date createTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss"
+    )
     @Column(name = "update_time")
     private Date updateTime;
 

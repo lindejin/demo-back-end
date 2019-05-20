@@ -19,4 +19,11 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <insert id="updateOrder">
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+      UPDATE t_order
+      SET  order_status= 1
+      WHERE order_id = #{item}
+    </foreach>
+  </insert>
 </mapper>
