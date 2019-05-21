@@ -101,13 +101,24 @@ export default {
       console.log(this.login)
       this.axios.get('/user/login', {params: this.login}).then(res => {
         console.log(res.data)
-        localStorage.setItem('Flag01', res.data.userid)
-        localStorage.setItem('token', res.data.token)
+        let tmp = res.data
+        if (tmp) {
+          localStorage.setItem('Flag01', res.data.userid)
+          localStorage.setItem('token', res.data.token)
+          let redirect = decodeURIComponent(this.$route.query.redirect || '/') //  获取登录成功后要跳转的路由。
+          this.$router.push({
+            path: redirect
+          })
+        } else {
+          return false
+        }
         // localStorage.setItem('Flag01', res.data)
       }).catch(() => {
         // 遇到异常则关闭加载
+        console.log('1111')
+        return false
       })
-      this.$router.go(-1)
+      // this.$router.go(-1)
     }
   },
   created () { }, // 生命周期 - 创建完成（可以访问当前this实例）

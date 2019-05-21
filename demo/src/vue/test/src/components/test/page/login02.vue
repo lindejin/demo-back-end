@@ -53,19 +53,28 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.axios.get('/user/login02', {params: this.loginForm}).then(res => {
-            // console.log(res.data)
-            localStorage.setItem('Flag02', res.data.userid)
-            localStorage.setItem('token', res.data.token)
+            console.log('1')
+            let tmp = res.data
+            if (tmp) {
+              localStorage.setItem('Flag02', res.data.userid)
+              localStorage.setItem('token', res.data.token)
+              let redirect = decodeURIComponent(this.$route.query.redirect || '/') //  获取登录成功后要跳转的路由。
+              this.$router.push({
+                path: redirect
+              })
+            } else {
+              return false
+            }
           }).catch(() => {
             // 遇到异常则关闭加载
+            console.log('2')
           })
           // localStorage.setItem('Flag02', )
         } else {
         }
       })
       // console.log(localStorage.setItem('Flag02'))
-      // console.log(localStorage.setItem('token'))
-      this.$router.go(-1)
+      // console.log(localStorage.setItem('token'))  this.$router.go(-1)
     }
   },
   watch: {

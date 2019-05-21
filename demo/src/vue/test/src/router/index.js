@@ -174,7 +174,9 @@ var router = new Router({
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (to.matched.some(record => record.meta.islogin)) { // 判断该路由是否需要登录权限
-    if (localStorage.getItem('Flag01')) { // 判断当前的token是否存在
+    let login01 = localStorage.getItem('Flag01')
+    console.log(login01)
+    if (login01 && login01 != null) { // 判断当前的token是否存在
       next()
     } else {
       next({
@@ -183,7 +185,9 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else if (to.matched.some(record => record.meta.islogin02)) {
-    if (localStorage.getItem('Flag02')) { // 判断当前的token是否存在
+    let login02 = localStorage.getItem('Flag02')
+    console.log(login02)
+    if (login02 && login02 != null) { // 判断当前的token是否存在
       next()
     } else {
       next({
